@@ -9,7 +9,7 @@
 
 services:
   zeroclaw:
-    image: ghcr.io/zeroclaw-labs/zeroclaw:latest
+    image: ghcr.io/zeroclaw-labs/zeroclaw:sha-c3cf915b94ce
     # Or build locally:
     # build: .
     container_name: zeroclaw
@@ -32,6 +32,9 @@ services:
       
       # Optional: Model override
       # - ZEROCLAW_MODEL=anthropic/claude-sonnet-4-20250514
+
+    # Start the long-running supervised runtime (gateway + channels + scheduler)
+    command: ["daemon"]
       
     volumes:
       # Persist workspace and config (must match WORKDIR/HOME in Dockerfile)
